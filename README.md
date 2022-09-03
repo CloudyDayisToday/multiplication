@@ -1,2 +1,6 @@
-# multiplication
-Dfferent methods of multiplication
+# Multiplication Algorithms
+
+Explore multiplication algorithms:
+- Karatsuba algorithm
+- Peasant algorithm
+- Quater aquare algorithm
