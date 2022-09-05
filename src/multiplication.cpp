@@ -1,7 +1,7 @@
 #include <tuple>
 #include <math.h>
 #include <string>
-#include "multiplication.h"
+#include "../include/multiplication.h"
 
 static std::tuple<int64_t, int64_t> seperate (int64_t x, int64_t m)
 {

@@ -1,13 +1,18 @@
 CC = g++
 
-output: main.o multiplication.o
-	$(CC) main.o multiplication.o -o output
+SRCS = $(wildcard src/*.cpp)
+INCLUDE = $(wildcard include/*.h)
+OBJS=$(SRCS:.c=.o)
 
-main.o: main.cpp
+
+output: $(OBJS) main.o
+	$(CC) $(OBJS) main.o -o output
+
+main.o: main.cpp 
 	$(CC) -c main.cpp
 
-multiplication.o: multiplication.cpp multiplication.h
-	$(CC) -c multiplication.cpp
+algorithm.o: $(SRC) $(INCLUDE)
+	$(CC) -c $(SRC)
 
 
 .PHONY = all clean
