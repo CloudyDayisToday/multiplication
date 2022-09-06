@@ -1,9 +1,6 @@
 #include <vector>
 
-struct Merge_Node {
-    int data;
-    Merge_Node *next;
-};
+
 
 class SortAlgor{
     private:
@@ -22,6 +19,8 @@ class SortAlgor{
 
         int partition (std::vector<int> &array, int low, int high);
 
+        void counting_sort (std::vector<int> &array, int max);
+
     public:
         SortAlgor(std::vector<int> &array, std::size_t size) : array(array), size(size){}
 
@@ -31,7 +30,6 @@ class SortAlgor{
 
         void selection_sort ();
 
-        // still having issue
         std::vector<int> top_down_merge_sort (std::vector<int> &array, std::size_t size);
 
         void heap_sort ();
@@ -44,6 +42,8 @@ class SortAlgor{
 
         void comb_sort ();
 
-        std::vector<int> count_sort ();
+        std::vector<int> counting_map_sort ();
+
+        void radix_sort ();
 };
 

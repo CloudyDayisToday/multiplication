@@ -33,18 +33,19 @@ void call_sorting_algor()
     SortAlgor sort(array, array.size());
     // sort.insertion_sort(array, array.size());
     // sort.selection_sort(array, array.size());
-    array = sort.top_down_merge_sort(array, array.size()-1);
+    // array = sort.top_down_merge_sort(array, array.size()-1);
+    // for (int i : array)
+    // {
+    //     std::cout << i << " " ;
+    // }
+    //std::cout << std::endl;
+    // sort.heap_sort();
+    // sort.quick_sort_handle();
+    // sort.comb_sort();
+    sort.radix_sort();
     for (int i : array)
     {
         std::cout << i << " " ;
     }
     std::cout << std::endl;
-    // sort.heap_sort();
-    // sort.quick_sort_handle();
-    // sort.comb_sort();
-    // for (int i : array)
-    // {
-    //     std::cout << i << " " ;
-    // }
-    // std::cout << std::endl;
 }

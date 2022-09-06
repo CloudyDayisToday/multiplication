@@ -3,6 +3,7 @@
 #include <tuple>
 #include <cassert>
 #include <cmath>
+#include <map>
 #include "../include/sorting.h"
 
 template<typename T>
@@ -101,6 +102,33 @@ void SortAlgor::quick_sort (std::vector<int> &vec, int low, int high)
     int pivot = partition(vec, low, high);
     quick_sort(vec, low, pivot-1);
     quick_sort(vec, pivot+1, high);
+}
+
+void SortAlgor::counting_sort (std::vector<int> &vec, int place)
+{
+    const int max = 10;
+    int count[max], output[size];
+    std::fill_n(count, max, 0);
+    std::fill_n(output, size, 0);
+
+    for (int i = 0; i < size; ++i)
+    {
+        int index = vec[i];
+        count[(index/place) % max] += 1;
+    }
+
+    for (int i = 1; i < max; ++i)
+        count[i] += count[i-1];
+    
+    for (int i = size-1; i >= 0; --i)
+    {
+        int index = vec[i];
+        output[count[(index/place)%max] - 1] = vec[i];
+        --count[(index/place) % max];
+    }
+
+    for (int i = 0; i < size; ++i)
+        vec[i] = output[i];
 }
 
 //-------------------------------------------------PUBLIC FUNCTION----//
@@ -250,25 +278,32 @@ void SortAlgor::comb_sort ()
     }
 }
 
-std::vector<int> SortAlgor::count_sort ()
+std::vector<int> SortAlgor::counting_map_sort ()
 {
-    int count[size+1], output[size];
+    std::map<int, int> count;
+    
+    std::vector<int> output;
 
     for (int i = 0; i < size-1; ++i)
-    {
-        int j = std::find(array, array+size-1, array[i]);
-        count[j] += 1;
-    }
+        count[array[i]] += 1;
 
-    for (int i = 0; i < size; ++i)
+    for (auto data : count)
     {
-        count[i] += count[i-1];
+        while (data.second > 0)
+        {
+            output.push_back(data.first);
+            --data.second;
+        }
     }
+    return output;
+}
 
-    for (int i = size-1; i >= 0; --i)
-    {
-        int j = array[i];
-        count[j] -= 1;
-        output[count[j]] = array[i];
-    }
+void SortAlgor::radix_sort()
+{
+    int maximum = INT32_MIN;
+    for (int i : array)
+        maximum = std::max(i, maximum);
+
+    for (int place = 1; (maximum / place) > 0; place*=10)
+        counting_sort(array, place);
 }
