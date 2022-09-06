@@ -12,6 +12,10 @@
 #pragma once
 #include <iostream>
 
-int64_t karatsuba_algorithm(int64_t x, int64_t y);
-int64_t peasant_algorithm(int64_t x, int64_t y);
-int64_t quarter_square_algorithm(int64_t x, int64_t y);
+class MultiAlgor
+{
+public:
+    int64_t karatsuba_algorithm(int64_t x, int64_t y);
+    int64_t peasant_algorithm(int64_t x, int64_t y);
+    int64_t quarter_square_algorithm(int64_t x, int64_t y);
+};

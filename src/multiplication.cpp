@@ -8,7 +8,7 @@ static std::tuple<int64_t, int64_t> seperate (int64_t x, int64_t m)
     return std::make_tuple(x/std::pow(10.0, m), x % static_cast<int64_t>(std::pow(10.0, m)));
 }
 
-int64_t karatsuba_algorithm(int64_t x, int64_t y)
+int64_t MultiAlgor::karatsuba_algorithm(int64_t x, int64_t y)
 {
     if ((x < 10) || (y < 10))
     {
@@ -30,13 +30,13 @@ int64_t karatsuba_algorithm(int64_t x, int64_t y)
 
 }
 
-int64_t peasant_algorithm(int64_t x, int64_t y)
+int64_t MultiAlgor::peasant_algorithm(int64_t x, int64_t y)
 {
     if (x == 1) return y;
     return ((x % 2) != 0) ? y + peasant_algorithm(floor(x/2), y*2) : peasant_algorithm(floor(x/2), y*2);
 }
 
-int64_t quarter_square_algorithm(int64_t x, int64_t y)
+int64_t MultiAlgor::quarter_square_algorithm(int64_t x, int64_t y)
 {
     return floor(pow(x+y, 2)/4) - floor(pow(x-y, 2)/4);
 }
