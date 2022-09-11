@@ -77,7 +77,7 @@ void SortAlgor::heapify (std::vector<int> &vec, std::size_t size)
     }
 }
 
-int SortAlgor::partition (std::vector<int> &vec, int low, int high)
+int SortAlgor:: partition (std::vector<int> &vec, int low, int high)
 {
     int pivot = vec[high];
 

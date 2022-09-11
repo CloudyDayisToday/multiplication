@@ -73,13 +73,33 @@ void call_search_algor()
 
 void call_algor()
 {
-    std::vector<int> array{10, 10, 10, 10, 10, 10, 55, 9, 8, 9, 93};
+    std::vector<int> array{10, 3, 5, 8, 10, 11, 55, 9, 8, 9, 93};
     Algorithm algor;
     int divisor = algor.euclidean_algorithm(114, 57);
-    std::cout << divisor << std::endl;
+    std::cout << "Euclidean algor : " << divisor << std::endl;
     divisor = algor.euclidean_recursion(114, 57);
-    std::cout << divisor << std::endl;
+    std::cout << "Euclidean recursion algor : " << divisor << std::endl;
     int majority = algor.boyer_moore_algorithm(array, array.size());
-    std::cout << majority << std::endl;
+    std::cout << "Boyer Moore algor : " << majority << std::endl;
+    int ith = algor.quick_select_algorithm(array, 0, array.size()-1, 0);
+    std::cout << "Quick select algor :  " << ith << std::endl;
+    std::string text = "feweooifjeioohgwueaghweooiweoo";
+    std::string pattern = "weoo";
+    algor.kmp_search_algorithm(text, pattern);
 
+    std::vector<int> vec1{5, 6, 9, 2, 3};
+    algor.make_set(vec1);
+    algor.printSets(vec1, algor);
+    algor.union_algorithm(5, 9);
+    algor.printSets(vec1, algor);
+
+    std::vector<int> tree{1, 2, 4, 6, 2, 1};
+    Node *head = nullptr;
+    for (int key : tree)
+        algor.push(head, key);
+    head->next->next->next = head->next->next;
+    if (algor.detection_algorithm(head))
+        std::cout << "cycle found!\n";
+    else
+        std::cout << "cycle not found!\n";
 }
